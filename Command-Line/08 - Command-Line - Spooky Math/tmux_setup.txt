@@ -1,1 +1,1 @@
-tmux new-session \; set -g mouse on \; split-window -v -p 50 /path/to/gperiodScript \; split-window -hf -p 63 python3 \; split-window -h -p 60 units \; split-window -v -p 80 sc \; split-window -v -p 65 gnuplot \; attach
+tmux new-session \; set -g mouse on \; split-window -v -p 50 /path/to/gperiodicScript \; split-window -hf -p 63 python3 \; split-window -h -p 60 units \; split-window -v -p 80 sc \; split-window -v -p 65 gnuplot \; attach
