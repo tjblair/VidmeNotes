@@ -1,0 +1,48 @@
+while :
+do
+clear
+			RED="\033[0;31m"
+			ORANGE="\033[0;33m"
+			YELLOW="\033[0;93m"
+			GREEN="\033[0;32m"
+			PURPLE="\033[0;35m"
+			BLUE="\033[1;34m"
+			LBLUE="\033[1;96m"
+			NOBLE="\033[1;44m"
+			LGRAY="\033[1;37m"
+			DGRAY="\033[1;90m"
+			NC="\033[0m"
+
+echo -e "  .---.                                                               .---.
+1 | ${BLUE}H${NC} |                                                               |${PURPLE}He${NC} |
+  |---+---.                                       .-------------------+---|
+2 |${RED}Li${NC} |${ORANGE}Be${NC} |                                       | ${LBLUE}B${NC} | ${BLUE}C${NC} | ${BLUE}N${NC} | ${BLUE}O${NC} | ${NOBLE}F${NC} |${PURPLE}Ne${NC} |
+  |---+---|                   |----8B-----|       |---+---+---+---+---+---|
+3 |${RED}Na${NC} |${ORANGE}Mg${NC} |3B  4B  5B  6B  7B v           v 1B 2B |${GREEN}Al${NC} |${LBLUE}Si${NC} | ${BLUE}P${NC} | ${BLUE}S${NC} |${NOBLE}Cl${NC} |${PURPLE}Ar${NC} |
+  |---+---+---------------------------------------+---+---+---+---+---+---|
+4 | ${RED}K${NC} |${ORANGE}Ca${NC} |${YELLOW}Sc${NC} |${YELLOW}Ti${NC} | ${YELLOW}V${NC} |${YELLOW}Cr${NC} |${YELLOW}Mn${NC} |${YELLOW}Fe${NC} |${YELLOW}Co${NC} |${YELLOW}Ni${NC} |${YELLOW}Cu${NC} |${YELLOW}Zn${NC} |${GREEN}Ga${NC} |${LBLUE}Ge${NC} |${LBLUE}As${NC} |${BLUE}Se${NC} |${NOBLE}Br${NC} |${PURPLE}Kr${NC} |
+  |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|
+5 |${RED}Rb${NC} |${ORANGE}Sr${NC} | ${YELLOW}Y${NC} |${YELLOW}Zr${NC} |${YELLOW}Nb${NC} |${YELLOW}Mo${NC} |${YELLOW}Tc${NC} |${YELLOW}Ru${NC} |${YELLOW}Rh${NC} |${YELLOW}Pd${NC} |${YELLOW}Ag${NC} |${YELLOW}Cd${NC} |${GREEN}In${NC} |${GREEN}Sn${NC} |${LBLUE}Sb${NC} |${LBLUE}Te${NC} | ${NOBLE}I${NC} |${PURPLE}Xe${NC} |
+  |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|
+6 |${RED}Cs${NC} |${ORANGE}Ba${NC} |${LGRAY}LAN${NC}|${YELLOW}Hf${NC} |${YELLOW}Ta${NC} | ${YELLOW}W${NC} |${YELLOW}Re${NC} |${YELLOW}Os${NC} |${YELLOW}Ir${NC} |${YELLOW}Pt${NC} |${YELLOW}Au${NC} |${YELLOW}Hg${NC} |${GREEN}Tl${NC} |${GREEN}Pb${NC} |${GREEN}Bi${NC} |${LBLUE}Po${NC} |${NOBLE}At${NC} |${PURPLE}Rn${NC} |
+  |---+---+---+-----------------------------------------------------------
+7 |${RED}Fr${NC} |${ORANGE}Ra${NC} |${DGRAY}ACT${NC}|${YELLOW}Rf${NC} |${YELLOW}Db${NC} |${YELLOW}Sg${NC} |${YELLOW}Bh${NC} |${YELLOW}Hs${NC} |${YELLOW}Mt${NC} |${YELLOW}Ds${NC} |${YELLOW}Rg${NC} |${YELLOW}Cn${NC} |${GREEN}Uut${NC}|${GREEN}Fl${NC} |${GREEN}Uup${NC}|${GREEN}Lv${NC} |${NOBLE}Uus${NC}|${PURPLE}Uuo${NC}|
+   -----------------------------------------------------------------------
+${RED}Alkali Metal${NC} ${ORANGE}Alkaline Earth${NC} ${YELLOW}Transition Metal${NC} ${GREEN}Basic Metal${NC} ${BLUE}Nonmetal${NC} ${LBLUE}Semimetal${NC}
+${NOBLE}Halogen${NC} ${PURPLE}Noble Gas${NC} ${LGRAY}Lanthanide${NC} ${DGRAY}Actinide${NC}
+              .-----------------------------------------------------------.
+   Lanthanide |${LGRAY}La${NC} |${LGRAY}Ce${NC} |${LGRAY}Pr${NC} |${LGRAY}Nd${NC} |${LGRAY}Pm${NC} |${LGRAY}Sm${NC} |${LGRAY}Eu${NC} |${LGRAY}Gd${NC} |${LGRAY}Tb${NC} |${LGRAY}Dy${NC} |${LGRAY}Ho${NC} |${LGRAY}Er${NC} |${LGRAY}Tm${NC} |${LGRAY}Yb${NC} |${LGRAY}Lu${NC} |
+              |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|
+   Actinide   |${DGRAY}Ac${NC} |${DGRAY}Th${NC} |${DGRAY}Pa${NC} | ${DGRAY}U${NC} |${DGRAY}Np${NC} |${DGRAY}Pu${NC} |${DGRAY}Am${NC} |${DGRAY}Cm${NC} |${DGRAY}Bk${NC} |${DGRAY}Cf${NC} |${DGRAY}Es${NC} |${DGRAY}Fm${NC} |${DGRAY}Md${NC} |${DGRAY}No${NC} |${DGRAY}Lw${NC} |
+.              ----------------------------------------------------------- "
+			echo ""
+            echo -n "Enter element abbreviation from the Periodic Table and press ENTER: "
+            read element
+            elementinfo=$(gperiodic $element)
+            echo "$elementinfo" > /tmp/elementlog.txt
+            echo "Information for element '$element':"
+            echo "$elementinfo"
+            echo ""
+	    read -p "Press ENTER to continue."
+            rm -rf /tmp/elementlog.txt
+done

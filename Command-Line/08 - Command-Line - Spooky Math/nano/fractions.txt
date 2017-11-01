@@ -1,0 +1,13 @@
+                          .-----------.
+                          | Fractions |
+                          `-----------'
+
+1. A bratty kid finds a spider and pulls off 1/4 of it's legs. How many
+   legs does the poor spider have left?
+
+2. 56 ravens are being chased by witches but only 1/8 of the ravens belong
+   to them. How many of the ravens are wild?
+
+3. There is a party at a haunted house with 12 zombies and 15 demons. 
+   Half of the zombies and 1/3 of the demons leave before midnight. 
+   How many monsters are left?

@@ -1,0 +1,16 @@
+                          .--------.
+                          | Primes |
+                          `--------'
+
+Using the "bsd-games" package, we can run a program called "primes" to 
+make it much easier to check if a number is prime or to find a range 
+of prime numbers.
+
+1. The swamp monster has OCD (Obsessive-compulsive disorder) and only 
+   comes up from the swamp on days of the month that are prime 
+   numbers. If it's October 7, what other days of the month will he
+   come out?
+
+2. A mummy prides himself on his expertise of mathimatics. A black cat 
+comes to visit his tomb and asks if 39 is a prime number. What would 
+the "expert" say?

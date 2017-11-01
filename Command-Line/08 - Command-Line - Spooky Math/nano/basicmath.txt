@@ -1,0 +1,17 @@
+                           .------------.                             
+                           | Basic Math |
+                           `------------'
+1. Jane sees 4 black cats in the woods and Will sees 3 more black 
+   cats. How many black cats are there in total?
+
+2. Jason had 10 machetes but lost 4 of them. How many machetes does Jason
+   still have?
+
+3. Billy, Anna, and Susan went trick-or-treating together and each 
+   received 30 peices of candy. How much total candy is there between 
+   them?
+
+4. On Halloween night, Linus and his friends Sally, Charlie, and Pig-Pen
+   waited for the Great Pumpkin to show and give them presents. However, the
+   Great Pumpkin only brought 20 presents with him. If divided equally, how
+   presents did each kid get?

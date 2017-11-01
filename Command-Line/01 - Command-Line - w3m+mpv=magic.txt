@@ -1,0 +1,24 @@
+# w3m+mpv=magic - https://vid.me/ye2Hg
+######################################
+
+| User-Agent 
+`-----------
+
+	* Open ~/.w3m/config and add this as your user_agent section:
+
+		- user_agent Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1
+
+			** Setting to a mobile user-agent makes the page load MP4 files instead of FLV.
+
+	* I recommend duplicating the config file first as config_desktop and then create an alias for "w3m-desktop" to use "w3m -config ~./w3m/config_desktop". This way,
+          you can open a web page with a desktop UA instead of a mobile one.
+
+| External browser
+`-----------------
+
+	* Open ~/.w3m/config and add this as your extbrowser section:
+
+		- extbrowser mpv -ytdl -slang=en --vo=opengl --ao=alsa
+			
+			** This opens an embedded video on the current page, even with a JS error
+			** This should work in GUI and TTY as long as your runlevel is 3 or 5.

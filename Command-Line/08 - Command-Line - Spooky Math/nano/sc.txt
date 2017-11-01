@@ -1,0 +1,18 @@
+                              .----.
+                              | sc |
+                              `----'
+< --> Add text, left justified
+> --> Add text, right justified
+\ --> Add text, centered
+= --> Add number
+x --> Delete cell
+gB13 --> Go to cell B13
+e --> Edit numeric data
+E --> Edit string data
+dr --> Delete row
+dc --> Delete column
+ir --> Insert row
+ic --> Insert column
+ma --> mark cell as "a"
+ca --> paste marked cell labeled "a"
+(@sum(A1:A10)) --> Sums cells A1 through A10

@@ -1,0 +1,53 @@
+# Recording Music - https://vid.me/N3WdL
+########################################
+
+| tmux
+`-----
+
+	* tmux new-session \; set -g mouse on \; split-window -v -p 86 \; split-window -h -p 68 mocp \; split-window -h -p 45 alsamixer \; split-window -v -p 65 \; split-window -v cava \; attach
+
+| aconnect
+`---------
+
+	* "aconnect --list" to list MIDI devices connected to the computer
+
+	* "aconnect 1 2" to connect device "1" to program "2"
+
+		- for me it was "aconnect 24 128"
+
+	* You have to re-run this each time you quit the program you are connected to.
+
+| Hydrogen drums
+`---------------
+
+	* To list drumkits:
+
+		- ls ~/.hydrogen/data/drumkits/
+
+	* h2cli -k [drumkit]
+
+	* The aconnect # #
+
+| Yoshimi synths
+`---------------
+
+	* To list synthesizers:
+
+		- tree ~/.config/yoshimi/presets/banks/
+
+	* yoshimi --auto-connect --no-gui --load-instrument="foobar.xiz"
+
+		- replace "foobar.xiz" with full path to actual .xiz file
+
+	* The aconnect # #
+
+| Recording
+`----------
+
+	* ffmpeg -f pulse -i default "output.wav"
+
+| Guitar
+`-------
+
+	* Unfortunately, you cannot record guitar and layer it over a playing audio file
+          at the same time as the video shows with Hydrogen and Yoshimi.

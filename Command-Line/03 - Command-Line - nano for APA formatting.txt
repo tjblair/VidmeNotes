@@ -1,0 +1,59 @@
+# nano for APA formatting - https://vid.me/lOMZD
+################################################
+
+| APA research papers
+`--------------------
+
+	* https://owl.english.purdue.edu/owl/resource/560/18
+
+	* Most APA research papers are organized as"
+		1. Title page
+		2. Abstract
+		3. An introduction
+		4. Methods
+			a. Participants
+			b. Materials
+			c. Apparatus
+			d. Procedure
+		5. Results
+		6. Discussion
+		7. References
+
+| Nano
+`-----
+
+	* Use "nano -m -u -c r102"
+		-m = mouse
+		-u = undo/redo
+		-c = constantly shows cursor position
+		-r102 = will wordwrap at column 102
+	
+	* "^" means "Ctrl" on the keyboard
+	
+	* Normally, nano only wordwraps until the text reaches the edge of the terminal or screen.
+	  However, because of inconsistent screen and terminal sizes, you may want to figure out
+          how many characters you need instead. To do the math properly, 10 or 12 point font is
+          characters per inch. So, a standard "8.5in. x 11in." sheet of paper would need to
+          wordwrap at no more than 102 characters with no margins taken into account. You can
+          change the font size in your terminal preferences.
+
+	* Ctrl+g for a help screen and Ctrl+x to exit
+	* Ctrl+w for search
+	* Alt+w for repeat search
+	* Alt+r for search and replace
+	* Ctrl+r to place text from another file at the cursor location
+	* Alt+> or Alt+< to switch between multiple instances of nano
+
+	* Not all terminal emulators support syntax highlighting, but you can find languages nano
+          supports inside /usr/share/nano/
+
+| Spellcheck and converting
+`--------------------------
+
+	* Install a page called "spell" to have spellchecking inside of nano. If you cannot find
+          it for you system, install "aspell."
+
+		- aspell -c example.txt
+
+	* soffice --headless --convert-to pdf example.txt
+

@@ -1,0 +1,15 @@
+                           .-------.
+                           | Units |
+                           `-------'
+
+1. The werewolf, having singed his hair off from the previous 
+   (gperiodic) example, is not feeling so well. His physician, Dr. 
+   Jekyll, prescribes him some liquid pain medicine. A single dose
+   is 60mL; however, the poor werewolf only has teaspoons. How many
+   teaspoons is 60mL? He's burnt pretty badly...
+
+2. Dracula travels to London but gets off of the boat like everyone
+   else. As an immigrant, he is checked out by a physician. To save
+   time, the doctor asks him his weight. Dracula says "81 killograms."
+   But because this is the UK in late 1800's, the doctor needs pounds. 
+   How much in pounds does Dracula weigh?

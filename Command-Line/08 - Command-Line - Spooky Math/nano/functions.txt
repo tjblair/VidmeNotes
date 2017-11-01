@@ -1,0 +1,30 @@
+                        .-----------.
+                        | Functions |
+                        `-----------'
+
+1. A ghoul was trotting down the sidewalk and noticed a large spiderweb.
+   Being a "math wizard," as most ghouls are, noticed 4 tasty moths trapped
+   in one quadrant, 3 juicy beetles in another quadrant, 2 sour spiders in 
+   another, and 1 confused worm in the last. If this ghoulish buffet had
+   been three times better, how many of each snack would there be?
+
+2. As punishment for not scaring enough trick-or-treaters, Casper the ghost 
+   was told to factor this dreadful equation, 24x^2*y+34xy+12y. How could he 
+   do this with Python?
+
+3. Casper the ghost was then told to take this factored equation: 
+   "3(2x+y)(4x-3y)" and expand it. How could he do this with Python?
+
+4. Satan is building a fence for Hell. Hell is an infinitely (oo) 
+   large and weird place. So if a formula was to represent the amount of 
+   fencing needed, he determined it to be y=x^x. However, Satan has a budget 
+   and needs to show mathematically to God as to how ridiculous that is. 
+   Using Python, what can he do?
+
+5. At the start of Halloween, a hungry wicked witch smells a lost child a 
+   mile away. She takes off from the ground at 100 MPH (44.704 m/s) and then 
+   lets gravity do the rest once she reaches as high as she can go. If 
+   gravity is 9.8 m/s, at what point in time will she reach her maximum 
+   height?
+
+6. Use integrate() for integrals.

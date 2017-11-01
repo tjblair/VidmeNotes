@@ -1,0 +1,39 @@
+# Twitch - The MPV, the IRSSI, and the TMUX - https://vid.me/gEdZm
+##################################################################
+
+| MPV
+`----
+
+	* mpv can be used to play anything that youtube-dl supports because it
+          uses youtube-dl by default when handling URL's.
+
+		- https://rg3.github.io/youtube-dl/supportedsites.html
+
+| IRSSI
+`------
+
+	* irssi is an IRC client. Twitch supports IRC for communication.
+
+	* https://help.twitch.tv/customer/portal/articles/1302780-twitch-irc
+
+		- the guide says it doesn't support SSL, but that's not true
+                  anymore. Use port 6697 for encryption.
+
+| TMUX
+`-----
+
+	* The point of using tmux for this is so we can view a live Twitch
+          stream as ASCII text and chat in another pane.
+		
+		- tmux new-session \; set -g mouse on \; split-window -h -p 20 \; attach
+
+			** splits the window with mouse enable for easy pane switching
+                           and -p for percent so we can then run:
+
+				1. mpv --vo=caca --ao=alsa [twitch url]
+
+				2. irssi
+
+	* You can run a twitch stream with mpv in GUI and then use another
+          client for IRC. Or, do what I do if I don't want ASCII but in TTY, 
+          change the runlevel to 3 and then have mpv in tty1 and irssi in tty2.

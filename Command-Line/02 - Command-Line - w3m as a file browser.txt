@@ -1,0 +1,28 @@
+# w3m as a file browser - https://vid.me/RBLGR
+##############################################
+
+| Opening home folder
+`--------------------
+
+	* w3m .
+	* w3m $HOME
+
+| Opening images and text
+`------------------------
+
+	* w3m should be able to open images (except SVG) and text files without any issues.
+
+| Opening audio and video
+`------------------------
+
+	* Go to the "link" of your video file.
+
+	* Press "u" on the keyboard to display its "url"
+
+	* You can copy this URL by right-clicking on most terminal emulators or by using the
+          ESC key with gpm (general purpose mouse) loaded in TTY.
+
+	* Use "!" to open a quick shell and type "exo-open" and paste the "url." Hit ENTER and
+          it should open in your default video player.
+
+		- exo-open works on most systems as "open with default program."

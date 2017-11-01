@@ -1,0 +1,43 @@
+# Tmux as a media center - https://vid.me/m7oky
+###############################################
+
+| tmux
+`-----
+
+	* tmux new-session \; set -g mouse on \; split-window -v -p 86 mpsyt \; split-window -h -p 68 mocp \; split-window -h -p 45 alsamixer \; split-window -v -p 65 irssi \; split-window -v cava \; attach
+
+| mps-youtube
+`------------
+
+	* Used to play music from YouTube, but can be configured to play regular
+          YouTube videos too.
+
+	* Installing:
+
+		- sudo pip install mps-youtube
+
+	* / to do a simple search
+	* // to search a playlist
+	* Type "help" for a category list and then "help [category]" for more info
+
+| mocp
+`-----
+
+	* A very easy to use music player for local files
+
+| alsamixer
+`----------
+
+	* An easy way to control volume of speakers and microphone in a TTY environment.
+
+| irssi
+`------
+
+	* Primarily there because I couldn't fit cdw, an ncurses disc burning program.
+
+| cava
+`-----
+
+	* It's an audio visualizer that run in the command line
+
+	* https://github.com/karlstav/cava

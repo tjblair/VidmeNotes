@@ -1,0 +1,32 @@
+# Encrypted Communication - https://vid.me/w7cJz
+################################################
+
+| Toxic
+`------
+
+	* Command line Tox client for Linux/Unix systems
+
+	* I could only test texting, file sending, and audio calling;
+          my webcam is not setup on my Linux machine.
+
+	* Using espeak as my audio voice worked
+
+| qTox
+`-----
+
+	* Cross-platform GUI Tox client
+	
+	* Tested texting, file-sharing, audio calling with Toxic, and
+          video calling with Antidote.
+
+| Antidote
+`---------
+	* phone Tox client
+
+	* Seems to support the same things as everything else
+
+| Notes
+`------
+
+	* Not that I don't mind adding friends via Tox, it was really
+          annoying to blur out so much stuff.

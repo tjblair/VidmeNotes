@@ -1,0 +1,12 @@
+                .--------------------------------------.
+                | gperiodic + script (see description) |
+                `--------------------------------------'
+
+1. A Werewolf is looking for a cure for his lycanthropy and stumbles upon 
+   an old chemistry book, "Getting Out of Hairy Situations," by Van Helsing. 
+   In the book it says to mix one mole of silver (Ag) with one mole of 
+   nitrogen (N), one mole of carbon (C), and one mole of oxygen (O). What 
+   would the total mass be? Mixing the silver with nitric acid and ethanol 
+   did not result in the type of hair removal he was hoping for.
+
+Note: 1 u.m is 1g/mol

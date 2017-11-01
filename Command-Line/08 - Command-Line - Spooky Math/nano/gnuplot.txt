@@ -1,0 +1,7 @@
+                           .---------.
+                           | gnuplot |
+                           `---------'
+
+1. A banshee was auditioning for Monster Idol and her shriek was 
+   recorded to have the formula of 10*sin(3*x). What would that look 
+   like if graphed?

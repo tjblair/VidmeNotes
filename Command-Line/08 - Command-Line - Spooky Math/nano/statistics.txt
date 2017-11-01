@@ -1,0 +1,18 @@
+                        .------------.
+                        | Statistics |
+                        `------------'
+
+Note: I'm going to keep this simple because you are much better off 
+      using programs like GNU Octave or R for this. If you don't mind
+      GUI, pspp is an excellent clone of SPSS.
+
+1. A vampire did a survey on blood types. Out of a sample size of 20 
+   not so willing participants, ignoring (+ vs. -): A, A, AB, O, O, B, B, 
+   AB, A, B, A, B, AB, A, O, O, A, A, B, O, what was the most common 
+   blood type of his victims?
+
+2. Frankenstein loves Halloween. It's the only time of the year he can 
+   go mushroom picking without being chased by torches. Because he comes 
+   from a scientific background, he likes to measure the mass of what 
+   he finds: .25g, 1g, 2g, .5g, and 1g. What's the mean, median, and 
+   variance of his mushrooms?
