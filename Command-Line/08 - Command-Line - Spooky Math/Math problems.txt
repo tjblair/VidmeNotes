@@ -62,40 +62,35 @@ Only simple examples because you are much better off using GNU Octave or R for t
 
 # Functions
 
-1. The wicked witch spent $500 on Halloween props, costumes, and candy this year to lure in tasty children. This is 15% more than last year. How much did she spend a year ago?
 
-	--> from sympy import *
-	--> x = Symbol('x')
-	--> solve(0.15*x-500, x) # You have to set the equation to zero, hence the "-500."
-
-2. A ghoul was trotting down the sidewalk and noticed a large spiderweb. Being a math wizard as most ghouls are, noticed 4 tasty moths trapped in one quadrant, 3 juicy beetles in another
+1. A ghoul was trotting down the sidewalk and noticed a large spiderweb. Being a math wizard as most ghouls are, noticed 4 tasty moths trapped in one quadrant, 3 juicy beetles in another
    quadrant, 2 sour spiders in another, and 1 confused worm in the last. If this ghoulish buffet had been three times better, how many of each snack would there be?
 
 	--> from sympy import *
  	--> Matrix([[4,3],[2,1]])*3
 
-3. As punishment for not scaring enough trick-or-treaters, Casper the ghost was told to factor this dreadful equation, 24x^2*y+34xy+12y. How could he do this with Python?
+2. As punishment for not scaring enough trick-or-treaters, Casper the ghost was told to factor this dreadful equation, 24x^2*y+34xy+12y. How could he do this with Python?
 
 	--> from sympy import *
 	--> x = Symbol('x')
 	--> y = Symbol('y')
 	--> factor(24*x**2*y + 34*x*y + 12*y)
 
-4. Casper the ghost was then told to take this factored equation, 3(2x+y)(4x-3y), and expand it. How could he do this with Python?
+3. Casper the ghost was then told to take this factored equation, 3(2x+y)(4x-3y), and expand it. How could he do this with Python?
 
 	--> from sympy import *
 	--> x = Symbol('x')
 	--> y = Symbol('y')
 	--> expand(3*(2*x+y)*(4*x-3*y))
 
-5. Satan is building a fence for Hell. Hell is an infinitely (oo) large and weird place. So if a formula was to represent the amount of fencing needed, he determined it to be y=x^x.
+4. Satan is building a fence for Hell. Hell is an infinitely (oo) large and weird place. So if a formula was to represent the amount of fencing needed, he determined it to be y=x^x.
    However, Satan has a budget and needs to show mathematically to God as to how ridiculous that is. Using Python, what can he do?
 
 	--> from sympy import *
 	--> x = Symbol('x')
 	--> limit(x**x, x, oo) #The limit of x as it gets close to infinity (oo)
 
-6. At the start of Halloween, a hungry wicked witch smells a lost child a mile away. She takes off from the ground at 100 MPH (44.704 m/s) and then lets gravity do the rest once she 
+5. At the start of Halloween, a hungry wicked witch smells a lost child a mile away. She takes off from the ground at 100 MPH (44.704 m/s) and then lets gravity do the rest once she 
    reaches as high as she can go. If gravity is 9.8 m/s, at what point in time will she reach her maximum height?
 
 	--> from sympy import *
@@ -104,7 +99,7 @@ Only simple examples because you are much better off using GNU Octave or R for t
 	--> yprime = height.diff(t) #To find the derivative of 'height'
 	--> solve(yprime, t)
 
-7. Use integrate() for integrals.
+6. Use integrate() for integrals.
 
 	--> integrate(yprime)
 
