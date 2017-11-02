@@ -41,6 +41,94 @@
 
 	* The aconnect # #
 
+	* Favorite synths:
+
+		- ~/.config/yoshimi/presets/banks/Brass/0009-Wah Brass.xiz
+		- ~/.config/yoshimi/presets/banks/Brass/0010-Solo Synth1.xiz
+		- ~/.config/yoshimi/presets/banks/Brass/0034-Analog Brass 2.xiz
+		- ~/.config/yoshimi/presets/banks/Brass/0065-Simple Brass.xiz
+		- ~/.config/yoshimi/presets/banks/Brass/0067-Brass Pad1.xiz
+		- ~/.config/yoshimi/presets/banks/Choir_and_Voice/0034-Slow Morph_Choir.xiz
+		- ~/.config/yoshimi/presets/banks/Drums/0001-Drums Kit1.xiz
+		- ~/.config/yoshimi/presets/banks/Dual/0002-Layered2.xiz
+		- ~/.config/yoshimi/presets/banks/Fantasy/0003-Space Synth.xiz
+		- ~/.config/yoshimi/presets/banks/Fantasy/0009-Space Voice2.xiz
+		- ~/.config/yoshimi/presets/banks/Guitar/0001-Dist Guitar 1.xiz (low notes; use like a dirty bass)
+		- ~/.config/yoshimi/presets/banks/Noises/0038-Metal Sound 5.xiz
+		- ~/.config/yoshimi/presets/banks/Organ/0034-Cathedral Organ2.xiz
+		- ~/.config/yoshimi/presets/banks/Organ/0097-Accordion Pad 1.xiz
+		- ~/.config/yoshimi/presets/banks/Organ/0101-Accordion 1.xiz
+		- ~/.config/yoshimi/presets/banks/Pads/0005-Square Pad 1.xiz
+		- ~/.config/yoshimi/presets/banks/Pads/0033-Synth Pad 1.xiz
+		- ~/.config/yoshimi/presets/banks/Pads/0037-Synth Pad 5.xiz
+		- ~/.config/yoshimi/presets/banks/Pads/0066-Flanged Pad 1.xiz (low notes)
+		- ~/.config/yoshimi/presets/banks/Pads/0097-Bell Pad.xiz
+		- ~/.config/yoshimi/presets/banks/Reed_and_Wind/0006-Clarinet.xiz
+		- ~/.config/yoshimi/presets/banks/Reed_and_Wind/0039-Reed 7.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0003-Saw Strings 3.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0006-Saw Strings 6.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0013-Strings Pad4.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0019-Sweep Pad 3Wah.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0035-Octave Pad.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0065-Simple Strings.xiz
+		- ~/.config/yoshimi/presets/banks/Strings/0073-Morph Strings1.xiz
+		- ~/.config/yoshimi/presets/banks/Synth/0002-Soft Synth 2.xiz
+		- ~/.config/yoshimi/presets/banks/SynthPiano/0004-Fantasy Bell.xiz
+		- ~/.config/yoshimi/presets/banks/SynthPiano/0011-Drop1.xiz
+		- ~/.config/yoshimi/presets/banks/SynthPiano/0035-Analog Piano 3.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0007-8bit_evolved.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0008-pulse_bell.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0021-popcorn_2.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0025-church_organ.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0026-60s_organ.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0027-metronomy_organ.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0049-strings_pad_3.xiz (Modulation cranked up)
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0050-soft_pad.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0053-another_galaxy.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0054-another_space.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0072-sine_pad_5.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0078-old_pad.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0089-bass_pad.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0099-small_bass.xiz (low notes)
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0118-musicbox.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0120-heavy_metal_guitar.xiz (low notes; use like a dirty bass)
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0123-synth_reed.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0126-8bit_car.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0127-computer.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0128-drunk_world.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0129-falling_stars.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0132-starting_machine.xiz
+		- ~/.config/yoshimi/presets/banks/The_Mysterious_Bank/0133-strange_world.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0001-Xylophone.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0005-Silver Bell.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0013-Full Square.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0014-Super Square.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0019-Soft.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0020-Ultra Soft.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0024-Full Strings.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0052-Great Organ.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0053-64ft Organ.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0054-Hammond Organ.xiz (crank the Modulation)
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0077-Voyager.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0086-Clarinet.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0087-Bassoon.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0100-Prophesy.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Collection/0120-Soft Ahh.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0006-Tinkle Bell.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0021-Bubbles.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0024-Solo.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0028-Theramin.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0037-Special Saw.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0038-Smooth Saw.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0049-Pad Kit.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0053-B3.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0056-Wide Bass.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0060-Stopped Pipe.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0107-Cathedral Harp.xiz
+		- ~/.config/yoshimi/presets/banks/Will_Godfrey_Companion/0121-Ghost Ensemble.xiz
+		- ~/.config/yoshimi/presets/banks/chip/0042-EffectA.xiz
+		- ~/.config/yoshimi/presets/banks/chip/0049-Dings.xiz
+
 | Recording
 `----------
 
