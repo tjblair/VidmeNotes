@@ -1,0 +1,691 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+HEIGHT=20
+WIDTH=75
+CHOICE_HEIGHT=20
+BACKTITLE="ImageMagick CLI"
+TITLE="A simple dialog-based frontend for ImageMagick"
+MENU="Choose one of the following options:"
+DEFAULT_DIRECTORY="$HOME/Pictures/"
+
+#####[ Functions ]#####
+folderchecker() { #Checks to make sure you picked a file and not a folder
+	foldercheck="directory"
+	while [ $foldercheck = "directory" ]
+				do
+					if location=$(dialog --stdout --backtitle "$BACKTITLE --> $subtitle" --title "$titletext" --fselect $DEFAULT_DIRECTORY 10 75)
+					then
+						foldercheck=$(file -b "$location" | grep "")
+					else
+						cd $DIR
+						./image-edit
+					fi
+					if [ $foldercheck = "directory" ]
+					then
+						dialog --msgbox "Please choose a file and not a folder." 10 60
+					fi
+				done
+}
+
+correctImage() { #Makes sure you chose the right image to edit
+	dialog --yesno "Was $location the correct image to edit?" 6 75
+				check="$?"
+				case $check in
+					0)
+						check="0"
+						;;
+					1)
+						check="1"
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+}
+
+ttyCheck_Before() { #Checks if in TTY environment before editing image
+	TTY=$(tty)
+				TMP=${TTY%/*}
+				TMP=${TMP##*/}
+				if [ "$TMP" == "pts" ]
+				then
+					echo ""
+					echo "Showing selected image."
+					echo "Quit the viewer to continue."
+					xdg-open "$location" #Will only work in GUI mode
+				else
+					fbi -noverbose -a -u "$location" #Will only work in command line mode #Will only work in command line mode
+				fi
+}
+
+ttyCheck_After() { #Checks if in TTY environment after editing image
+	TTY=$(tty)
+				TMP=${TTY%/*}
+				TMP=${TMP##*/}
+				if [ "$TMP" == "pts" ]
+				then
+					echo ""
+					echo "Showing edited image."
+					echo "Quit the viewer to continue."
+					xdg-open "$templocation" #Will only work in GUI mode
+				else
+					fbi -noverbose -a -u "$templocation" #Will only work in command line mode #Will only work in command line mode
+				fi
+}
+
+imageOk() {
+	dialog --yesno "Was the new image ok?" 6 75
+				check="$?"
+				case $check in
+					0)
+						cp "$templocation" "$location"
+						rm -rf "$templocation"
+						imagecheck="0"
+						;;
+					1)
+						imagecheck="1"
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+}
+
+#####[ Menu ]#####
+OPTIONS=(1 "View image"
+         2 "Blur"
+         3 "Convert a file"
+         4 "Compress image (jpeg)"
+         5 "Contrast"
+         6 "Despeckle"
+         7 "Enhance - get rid of noise"
+         8 "Flip image (vertical flip ^ v)"
+         9 "Flop image (horizontal flop <->)"
+         10 "Gamma"
+         11 "Image info"
+         12 "Monochromatic (black and white the image)"
+         13 "Posterize (reduce number of colors)"
+         14 "Resize a file")
+
+CHOICE_IMAGEEDITMENU=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE_IMAGEEDITMENU in
+		1)
+			cd $DIR
+			folderchecker #Checks file vs. folder
+			ttyCheck_Before #Checks TTY vs. GUI before editing
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        2)
+			cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Blur Image"
+				titletext="Please choose an image to blur:"
+				folderchecker #Checks file vs. folder
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				if radius=$(dialog --stdout --rangebox "What is the blur radius you'd like to set for $location? \nRadius refers to how how far to push each pixel.\nAnything higher than 5 is probably too much.\nUse Up/Down arrow keys to move slider." 10 60 0 8 0)
+				then
+					echo ""
+				else
+					cd $DIR
+					./image-edit
+				fi
+				if strength=$(dialog --stdout --rangebox "What is the blur strength you'd like to set for $location? \nStrength refers to how strong the pixels blur from the start of each pixel to the end of the chosen radius before fading out.\nAnything higher than 8 is probably too much.\nUse Up/Down arrow keys to move slider." 10 60 0 8 0)
+				then
+					mogrify -blur "$radius"x"$strength" "$templocation"
+				else
+					cd $DIR
+					./image-edit
+				fi
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        3)
+			cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Convert Image"
+				titletext="Please choose an image to convert:"
+				folderchecker #Checks file vs. folder
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			if type=$(dialog --backtitle "$BACKTITLE --> Convert" --title "Please choose a format" --menu "" 12 40 20 \
+				1 "JPEG" \
+				2 "PNG" \
+				3 "BMP" \
+				4 "GIF" \
+				5 "TIFF" \
+				6 "PDF" 3>&1 1>&2 2>&3)
+			then
+				case $type in
+					1)
+						mogrify -format jpeg "$location"
+						;;
+					2)
+						mogrify -format png "$location"
+						;;
+					3)
+						mogrify -format bmp "$location"
+						;;
+					4)
+						mogrify -format gif "$location"
+						;;
+					5)
+						mogrify -format tiff "$location"
+						;;
+					6)
+						mogrify -format pdf "$location"
+						;;
+				esac
+			else
+				cd $DIR
+				./image-edit
+			fi
+			if [ "$type" = "1" ]; then
+				type="JPEG"
+			elif [ "$type" = "2" ]; then
+				type="PNG"
+			elif [ "$type" = "3" ]; then
+				type="BMP"
+			elif [ "$type" = "4" ]; then
+				type="BMP"
+			elif [ "$type" = "5" ]; then
+				type="TIFF"
+			elif [ "$type" = "6" ]; then
+				type="PDF"
+			fi
+			dialog --yesno "File $loaction has been converted to $type.\n Keep original file?" 6 40
+				check="$?"
+				case $check in
+					0)
+						dialog --msgbox "The file $location was KEPT." 6 75
+						;;
+					1)
+						rm -rf "$location"
+						dialog --msgbox "The file $location was DELETED." 6 75
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+            ./image-edit
+            exec 3>&-
+            ;;
+        4)
+			cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Compress Image"
+				titletext="Please choose an image to compress:"
+				folderchecker #Checks file vs. folder
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			echo ""
+            filename=${location%.*}
+            directory="${location%/*}"
+            cd "$directory"
+            if compression=$(dialog --stdout --rangebox "What is the quality level (JPEG) you'd like to set for $location? \nUse Up/Down arrow keys to move slider." 10 60 0 100 80)
+			then
+				convert "$location" -quality $compression "$filename.jpg"
+			else
+				cd $DIR
+				./image-edit
+			fi
+			dialog --yesno "File $location has been converted to JPEG. \nKeep original file?" 8 75
+				check="$?"
+				case $check in
+					0)
+						dialog --msgbox "Original file $location was KEPT." 6 75
+						;;
+					1)
+						rm -rf "$location"
+						#rm -rf "$filename.png" "$filename.bmp" "$filename.gif" "$filename.tiff" "$filename.tif" "$filename.jpeg"
+						dialog --msgbox "Original file $location was DELETED." 6 75
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        5)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="+/- Contrast Image"
+				titletext="Please choose an image to change contrast:"
+				folderchecker #Checks for file vs. folder			
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				if amount=$(dialog --stdout --rangebox "What is the contrast you'd like to set for $location?\nUse Up/Down arrow keys to move slider.\nBe careful which digit the curser is on when moving the slider." 10 60 -20 20 0)
+				then
+					if [ $amount -ge 1 ]
+					then
+						i=1
+						while [ $i -le $amount ]
+						do
+							#Increase contrast
+							for i in $(seq 0 10 100) ; do mogrify -contrast "$templocation"; sleep 1; echo $i | dialog --title "Increasing contrast..." --gauge "Please wait" 6 60 0; done
+							i=$(( $i+1 ))
+						done
+					elif [ $amount -le -1 ]
+					then
+						i=1
+						absolutevalueamount=$(echo "$amount" | sed 's/-//g') #absolute value convert (remove negative symbol)
+						while [ $i -le "$absolutevalueamount" ]
+						do
+							#Decrease contrast
+							for i in $(seq 0 10 100) ; do mogrify +contrast "$templocation"; sleep 1; echo $i | dialog --title "Decreasing contrast..." --gauge "Please wait" 6 60 0; done
+							i=$(( $i+1 ))
+						done
+					else
+						dialog --msgbox "Image contrast was not changed." 6 40
+					fi
+				else
+					cd $DIR
+					./image-edit
+				fi
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        6)
+			cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Despeckle Image"
+				titletext="Please choose an image to despeckle:"
+				folderchecker #Checks for file vs. folder		
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				if amount=$(dialog --stdout --rangebox "What is the despeckle amount you'd like to set for $location?\nUse Up/Down arrow keys to move slider.\nBe careful which digit the curser is on when moving the slider." 10 60 0 20 0)
+				then
+					if [ $amount -ge 1 ]
+					then
+						i=1
+						while [ $i -le $amount ]
+						do
+							for i in $(seq 0 10 100) ; do mogrify -despeckle "$templocation"; sleep 1; echo $i | dialog --title "Despeckling image.." --gauge "Please wait" 6 60 0; done
+							i=$(( $i+1 ))
+						done
+					else
+						dialog --msgbox "Image despeckle was not changed." 6 40
+					fi
+				else
+					cd $DIR
+					./image-edit
+				fi
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        7)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Enhance Image"
+				titletext="Please choose an image to enhance:"
+				folderchecker #Checks file vs. folder			
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				if amount=$(dialog --stdout --rangebox "What is the enhance amount you'd like to set for $location?\nUse Up/Down arrow keys to move slider.\nBe careful which digit the curser is on when moving the slider." 10 60 0 20 0)
+				then
+					if [ $amount -ge 1 ]
+					then
+						i=1
+						while [ $i -le $amount ]
+						do
+							for i in $(seq 0 10 100) ; do mogrify -enhance "$templocation"; sleep 1; echo $i | dialog --title "Enhancing image.." --gauge "Please wait" 6 60 0; done
+							i=$(( $i+1 ))
+						done
+					else
+						dialog --msgbox "Image was not enhanced." 6 40
+					fi
+				else
+					cd $DIR
+					./image-edit
+				fi
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        8)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Flip Image"
+				titletext="Please choose an image to (vertical) flip:"
+				folderchecker #Checks file vs. folder	
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			echo ""
+			mogrify -flip "$location"
+			ttyCheck_Before #Since it's just a flip, there's no edit checking ($templocation)
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        9)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Flop Image"
+				titletext="Please choose an image to (horizontal) flop:"
+				folderchecker #Checks file vs. folder	
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			echo ""
+			mogrify -flop "$location"
+			ttyCheck_Before #Since it's just a flop, there's no edit checking ($templocation)
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        10)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Gamma"
+				titletext="Please choose an image to change gamma:"
+				folderchecker #Checks file vs. folder				
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				if amount=$(dialog --stdout --rangebox "What is the gamma (30 = 3.0) you'd like to set for $location?\n \nUse Up/Down arrow keys to move slider.\nBe careful which digit the curser is on when moving the slider." 10 60 0 30 0)
+				then
+					decimalamount=$(echo "scale=1; $amount / 10" | bc )
+					if [ $amount -ge 1 ]
+					then
+						mogrify -gamma "$decimalamount" "$templocation"
+					else
+						dialog --msgbox "Image gamma was not changed." 6 40
+					fi
+				else
+					cd $DIR
+					./image-edit
+				fi
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        11)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Image Info"
+				titletext="Please choose an image to get info"
+				folderchecker #Checks file vs. folder				
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				dialog --yesno "View information of image $location?" 6 75
+				check="$?"
+				case $check in
+					0)
+						check="0"
+						;;
+					1)
+						check="1"
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+			done
+			info=$(mogrify -identify -verbose "$location")
+			echo "$info" > /tmp/imageinfolog.txt
+			dialog --title "Graphics -> Image Edit -> Image Information" --textbox /tmp/imageinfolog.txt 32 80
+			rm -rf /tmp/imageinfolog.txt
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+			
+        12)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Monochrome Image"
+				titletext="Please choose an image to black & white:"
+				folderchecker #Checks file vs. folder				
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				mogrify -monochrome "$templocation"
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				dialog --yesno "Was the new image ok?" 5 27
+				check="$?"
+				case $check in
+					0)
+						cp "$templocation" "$location"
+						rm -rf "$templocation"
+						imagecheck="0"
+						;;
+					1)
+						subtitle="Monochrome Image"
+						titletext="Please choose an image to black & white:"
+						folderchecker #Checks file vs. folder	
+						imagecheck="1"
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        13)
+			cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Posterize"
+				titletext="Please choose an image to reduce number of colors:"
+				folderchecker #Checks file vs. folder			
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				if amount=$(dialog --stdout --rangebox "How many colors to limit for $location?\nUse Up/Down arrow keys to move slider.\nBe careful which digit the curser is on when moving the slider." 10 60 1 256 64)
+				then
+					convert "$templocation" -colors $amount "$templocation"
+				else
+					cd $DIR
+					./image-edit
+				fi
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+        14)
+            cd $DIR
+			clear
+			check="1"
+			while [ $check = "1" ]
+			do
+				subtitle="Resize Image"
+				titletext="Please choose an image to resize:"
+				folderchecker #Checks file vs. folder			
+				ttyCheck_Before #Checks TTY vs. GUI before editing
+				correctImage #Correct image to edit?
+			done
+			imagecheck="1"
+			while [ $imagecheck = "1" ]
+			do
+				cp "$location" /tmp/
+				templocation="/tmp/${location##*/}"
+				numbercheck="1"
+				while [ "$numbercheck" = "1" ]
+				do
+					if width=$(dialog --inputbox "Enter new width for image (pixels):" 10 50 3>&1 1>&2 2>&3)
+					then
+						if echo "$width" | egrep -q '^[0-9]*\.?[0-9]+$'
+						then
+							numbercheck="0"
+						else
+							dialog --msgbox "$width is an invalid entry. Only positive numbers accepted." 10 75
+						fi
+					else
+						cd $DIR
+						./image-edit
+					fi
+				done
+				numbercheck="1"
+				while [ "$numbercheck" = "1" ]
+				do
+					if height=$(dialog --inputbox "Enter new height for image (pixels):" 10 50 3>&1 1>&2 2>&3)
+					then
+						if echo "$height" | egrep -q '^[0-9]*\.?[0-9]+$'
+						then
+							numbercheck="0"
+						else
+							dialog --msgbox "$height is an invalid entry. Only positive numbers accepted." 10 75
+							numbercheck="1"
+						fi
+					else
+						cd $DIR
+						./image-edit
+					fi
+				done
+				dialog --yesno "Preserve ratio for $location?" 6 75
+				ratio="$?"
+				case $ratio in
+					0)
+						mogrify -resize "$width"x"$height" "$templocation"
+						;;
+					1)
+						mogrify -resize "$width"x"$height"! "$templocation" #Backwards?
+						;;
+					255)
+						cd $DIR
+						./image-edit
+						;;
+				esac
+				ttyCheck_After #Checks TTY vs. GUI after editing
+				imageOk #Checks if the edited image looks ok
+			done
+			dialog --msgbox "Finished. Press ENTER to go back to the menu." 5 50
+            cd $DIR
+            ./image-edit
+            exec 3>&-
+            ;;
+       255)
+			clear
+			;;
+esac

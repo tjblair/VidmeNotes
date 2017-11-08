@@ -43,7 +43,7 @@ Only simple examples because you are much better off using GNU Octave or R for t
    O, O, A, A, B, O, what was the most common blood type of his victims?
 
 	--> from sympy import *
-	--> from statistics import mode *
+	--> from statistics import mode
 	--> A = Symbol('A')
 	--> B = Symbol('B')
 	--> AB = Symbol('AB')
