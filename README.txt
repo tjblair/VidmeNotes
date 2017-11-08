@@ -12,3 +12,4 @@ Albums
                     + Tmux as a media center (https://vid.me/m7oky)
                     + Recording Music - (https://vid.me/N3WdL)
                     + Spooky Math - Solve Halloween themed math problems using the command line (https://vid.me/ZG23T)
+                    + Image editing in the command line (https://vid.me/4ndlj)
