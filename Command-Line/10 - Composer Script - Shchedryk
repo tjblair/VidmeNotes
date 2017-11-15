@@ -1,0 +1,643 @@
+#.--------------------------.
+#| Script by: TheOuterLinux |
+#`--------------------------'------------.
+# | https://github.com/theouterlinux     |
+# | https://twitter.com/theouterlinux    |
+# | https://patreon.com/theouterlinux    |
+# | https://vid.me/theouterlinux         |
+# | https://theouterlinux.tumblr.com     |
+# | https://theouterlinux.artstation.com |
+# | https://soundcloud.com/theouterlinux |
+# `--------------------------------------'
+
+#####[ Default Variables ]#####
+bpm=120 #Beats per minute
+top_measure=3
+bottom_measure=4
+
+##DO NOT EDIT:
+quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+whole=$(bc <<< "scale=3;$quarter*4")
+half=$(bc <<< "scale=3;$whole/2")
+dhalf=$(bc <<< "scale=3;$half+($half/2)")
+eighth=$(bc <<< "scale=3;$quarter/2")
+deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+sixteenth=$(bc <<< "scale=3;$eighth/2")
+dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+
+rest_whole(){
+    play -qn synth $whole pluck A4 gain -100
+}
+rest_half(){
+    play -qn synth $half pluck A4 gain -100
+}
+rest_dhalf(){
+    play -qn synth $dhalf pluck A4 gain -100
+}
+rest_quarter(){
+    play -qn synth $quarter pluck A4 gain -100
+}
+rest_dquarter(){
+    play -qn synth $quarter pluck A4 gain -100
+}
+rest_eighth(){
+    play -qn synth $eighth pluck A4 gain -100
+}
+rest_deighth(){
+    play -qn synth $eighth pluck A4 gain -100
+}
+rest_sixteenth(){
+    play -qn synth $sixteenth pluck A4 gain -100
+}
+rest_dsixteenth(){
+    play -qn synth $sixteenth pluck A4 gain -100
+}
+rest_thirtytwo(){
+    play -qn synth $thirtytwo pluck A4 gain -100
+}
+rest_dthirtytwo(){
+    play -qn synth $thirtytwo pluck A4 gain -100
+}
+rest_sixtyfour(){
+    play -qn synth $sixtyfour pluck A4 gain -100
+}
+rest_dsixtyfour(){
+    play -qn synth $sixtyfour pluck A4 gain -100
+}
+################
+
+NoteCorrection(){ #This corrects notes without Scientific Pitch Notation to add "4" to the letter
+    middle="4"
+    echo "${note}" | grep -q '[0-9]'
+    if [ $? != 0 ]; then
+        note=$note$middle
+    fi
+}
+
+#####[ Humanizing (Optional)]#####
+
+#Tempo
+custom(){
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+}
+presto(){
+    bpm=$(awk -v min=168 -v max=200 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 168-200 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+}
+allegro(){
+    bpm=$(awk -v min=120 -v max=168 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 120-168 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+}
+moderato(){
+    bpm=$(awk -v min=108 -v max=120 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 108-120 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+}
+andante(){
+    bpm=$(awk -v min=76 -v max=108 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 76-108 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+}
+
+tranquillo(){ #Slow tempo and raise pitch
+    bpm=$(awk -v min=60 -v max=80 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 60-80 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+    NoteCorrection
+    basepitch=$(echo "$note" | grep -oP '[0-9]+') #Grabs Scientific Pitch Notation (SPN)
+    newpitch=$(bc <<< "scale=0;$basepitch+1") #Adds +1 to SPN
+    basenote=$(echo "$note" | grep -oP '[A-Z]+') #Grabs letter only of note
+    note=$basenote$newpitch #Letter of note with 12 half-step higher SPN
+}
+
+grave(){ #Slow tempo and lower pitch
+    bpm=$(awk -v min=60 -v max=80 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 60-80 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+    NoteCorrection
+    basepitch=$(echo "$note" | grep -oP '[0-9]+') #Grabs Scientific Pitch Notation (SPN)
+    newpitch=$(bc <<< "scale=0;$basepitch - 1") #Subtracts -1 to SPN
+    basenote=$(echo "$note" | grep -oP '[A-Z]+') #Grabs letter only of note
+    note=$basenote$newpitch #Letter of note with 12 half-step lower SPN
+}
+
+lento(){
+    bpm=$(awk -v min=40 -v max=60 'BEGIN{srand(); print int(min+rand()*(max-min+1))}') #Random 40-60 BPM
+    quarter=$(bc <<< "scale=3;(60/$bpm)*($top_measure/$bottom_measure)")
+    dquarter=$(bc <<< "scale=3;$quarter+($quarter/2)")
+    whole=$(bc <<< "scale=3;$quarter*4")
+    dwhole=$(bc <<< "scale=3;$whole+($whole/2)")
+    half=$(bc <<< "scale=3;$whole/2")
+    dhalf=$(bc <<< "scale=3;$half+($half/2)")
+    eighth=$(bc <<< "scale=3;$quarter/2")
+    deighth=$(bc <<< "scale=3;$eighth+($eighth/2)")
+    sixteenth=$(bc <<< "scale=3;$eighth/2")
+    dsixteenth=$(bc <<< "scale=3;$sixteenth+($sixteenth/2)")
+    thirtytwo=$(bc <<< "scale=3;$sixteenth/2")
+    dthirtytwo=$(bc <<< "scale=3;$thirtytwo+($thirtytwo/2)")
+    sixtyfour=$(bc <<< "scale=3;$thirtytwo/2")
+    dsixtyfour=$(bc <<< "scale=3;$sixtyfour+($thirtytwo/2)")
+}
+
+#####[ Instruments ]#####
+guitar(){
+    NoteCorrection #Turns "A" into "A4" and so forth...
+    play -qn synth $length pluck $note
+}
+
+##########################[ Quick Instructions ]########################################
+# Note;Length;Instrument                                                               #
+# Note;LengthInstrument & Note;Length;Instrument for two notes at the same time        #
+# Example: note="C#";length="$quarter";guitar #Plucks "C4# note                        #
+# Example: note="B5";length="$deigth";echo $note;guitar #Dotted eighth with note shown #
+# "A" is the same as "A4"                                                              #
+# "C4" is middle C                                                                     #
+# Each number, as in "C4<--" is 12 half-steps higher or lower.                         #
+# Adding "tranquillo" or "allegro" is optional.                                        #
+# ALAWYS go from longest note to shortest when combining on the same line.             #
+# Try not to play more than three notes at a time.                                     #
+# You do not need to use "echo"; this script does to visually show what is happening.  #
+########################################################################################
+
+#####[ "Shchedryk" by Mykola Leontovych https://musescore.com/user/21903/scores/37381 ]#####
+
+#Measure 1
+moderato
+echo -n "Measure 1" #Echoing measure for debugging purposes
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#%%%%%%%%%%%[ Start of loop |: ]%%%%%%%%%%%%%%%
+loop=0
+while [ $loop -le 1 ] #While loops utilized as "|: :|" in sheet music
+do
+moderato
+#Measure 2
+echo -n "Measure 2"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 3
+echo -n "Measure 3"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar
+echo""
+#----------------------------------------------
+#Measure 4
+echo -n "Measure 4"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 5
+echo -n "Measure 5"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 6
+echo -n "Measure 6"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="E3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="E3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 7
+echo -n "Measure 7"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="D3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="D3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 8
+echo -n "Measure 8"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 9
+echo -n "Measure 9"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="D2";length=$half;echo $note;guitar & note="F#3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar & note="D2";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 10
+echo -n "Measure 10"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#2";length=$half;echo $note;guitar & note="E3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="E3";length=$quarter;echo $note;guitar & note="C#2";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 11
+echo -n "Measure 11"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="B2";length=$half;echo $note;guitar & note="D3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="D3";length=$quarter;echo $note;guitar & note="B2";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 12
+echo -n "Measure 12"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#2";length=$half;echo $note;guitar & note="C#3";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#4";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar & note="F#2";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 13
+echo -n "Measure 13"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="D1";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="D1";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="D1";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="D1";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 14
+echo -n "Measure 14"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 15
+echo -n "Measure 15"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="B2";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="B2";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="B2";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="B2";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 16
+echo -n "Measure 16"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 17
+echo -n "Measure 17"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$quarter;echo $note;guitar & note="C#4";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 18
+echo -n "Measure 18"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$quarter;echo $note;guitar & note="C#4";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar
+note="F#1";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 19
+echo -n "Measure 19"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$quarter;echo $note;guitar & note="C#4";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar
+note="F#1";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 20
+echo -n "Measure 20"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$quarter;echo $note;guitar & note="C#4";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 21
+echo -n "Measure 21"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A2";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="G2";length=$eighth;echo $note;guitar & note="F#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="A2";length=$eighth;echo $note;guitar & note="F#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="E4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="D4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 22
+echo -n "Measure 22"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A2";length=$quarter;echo $note;guitar & note="C#4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="G2";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="A2";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 23
+echo -n "Measure 23"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A2";length=$quarter;echo $note;guitar & note="B4";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="G2";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="A2";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="C#4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$eighth;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 24
+echo -n "Measure 24"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="A2";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+note="G2";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#1";length=$quarter;echo $note;guitar & note="A2";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar & note="F#3";length=$eighth;echo $note;guitar
+note="F#3";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 25
+echo -n "Measure 25"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#1";length=$half;echo $note;guitar & note="C#2";length=$half;echo $note;guitar & note="D#3";length=$eighth;echo $note;guitar
+note="C#3";length=$eighth;echo $note;guitar
+note="E#3";length=$eighth;echo $note;guitar
+note="F#3";length=$eighth;echo $note;guitar
+note="C#1";length=$quarter;echo $note;guitar & note="C#1";length=$quarter;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 26
+echo -n "Measure 26"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#1";length=$half;echo $note;guitar & note="D#3";length=$quarter;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar
+note="C#4";length=$eighth;echo $note;guitar
+note="B4";length=$quarter;echo $note;guitar & note="E#3";length=$quarter;echo $note;guitar & note="E#3";length=$quarter;echo $note;guitar
+note="C#1";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar & note="A";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 27
+echo -n "Measure 27"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#2";length=$half;echo $note;guitar & note="D#3";length=$eighth;echo $note;guitar
+note="C#3";length=$eighth;echo $note;guitar
+note="E#3";length=$eighth;echo $note;guitar
+note="F#3";length=$eighth;echo $note;guitar
+note="C#2";length=$quarter;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 28
+echo -n "Measure 28"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#2";length=$half;echo $note;guitar & note="B4";length=$eighth;echo $note;guitar
+note="C#4";length=$eighth;echo $note;guitar
+note="B4";length=$quarter;echo $note;guitar & note="E#3";length=$quarter;echo $note;guitar
+note="D2";length=$eighth;echo $note;guitar & note="A";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 29
+echo -n "Measure 29"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="E2";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="E2";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 30
+echo -n "Measure 30"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="D2";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="D2";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 31
+echo -n "Measure 31"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#2";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="C#2";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 32
+andante #Place this first
+echo -n "Measure 32"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="B1";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="D#3";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="B1";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="D#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 33
+echo -n "Measure 33"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#1";length=$half;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar
+note="G#4";length=$eighth;echo $note;guitar
+note="A4";length=$eighth;echo $note;guitar
+note="F#1";length=$quarter;echo $note;guitar & note="F#4";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
+(( loop++ ))
+done
+#%%%%%%%%%%%%%[ End of loop :| ]%%%%%%%%%%%%%%%
+#Measure 34
+echo -n "Measure 34"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#3";length=$half;echo $note;guitar & note="C#3";length=$half;echo $note;guitar & note="A2";length=$half;echo $note;guitar
+note="G#2";length=$eighth;echo $note;guitar
+note="A2";length=$eighth;echo $note;guitar
+note="F#3";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar & note="F#2";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 35
+echo -n "Measure 35"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#3";length=$half;echo $note;guitar & note="C#3";length=$half;echo $note;guitar & note="A2";length=$half;echo $note;guitar
+note="G#2";length=$eighth;echo $note;guitar
+note="A2";length=$eighth;echo $note;guitar
+note="F#3";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar & note="F#2";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 36
+echo -n "Measure 36"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="F#3";length=$half;echo $note;guitar & note="C#3";length=$half;echo $note;guitar & note="A2";length=$half;echo $note;guitar
+note="G#2";length=$eighth;echo $note;guitar
+note="A2";length=$eighth;echo $note;guitar
+note="F#3";length=$quarter;echo $note;guitar & note="C#3";length=$quarter;echo $note;guitar & note="F#2";length=$eighth;echo $note;guitar
+echo ""
+#----------------------------------------------
+#Measure 37
+moderato #Place this first
+echo -n "Measure 37"
+echo -n " | BPM: $bpm |" #Echoing BPM for debugging
+echo " Time signature: $top_measure/$bottom_measure" #Echoing time signature for debugging
+note="C#4";length=$quarter;echo $note;guitar & note="A4";length=$quarter;echo $note;guitar
+note="B4";length=$eighth;echo $note;guitar & note="G#4";length=$eighth;echo $note;guitar
+note="C#4";length=$eighth;echo $note;guitar & note="A4";length=$eighth;echo $note;guitar
+note="F#3";length=$quarter;echo $note;guitar & note="F#3";length=$quarter;echo $note;guitar
+echo ""
+#----------------------------------------------
